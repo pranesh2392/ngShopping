@@ -1,0 +1,23 @@
+<form>
+  <div class="form-group">
+    <label for="productName">Product Name</label>
+    <input type="text" class="form-control" id="productName">
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="text" class="form-control" id="price">
+  </div>
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select name="" id="category" class="form-control" type="text">
+      <option value=""></option>
+      <option value="" *ngFor="let c of categories$ | async" [value]="c.key">{{c.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="ImageURL">Image URL</label>
+    <input type="text" class="form-control" id="ImageURL">
+  </div>
+  <button class="btn btn-primary">SAVE</button>
+  
+</form>
