@@ -14,5 +14,4 @@ export class CategoryService {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     });
   }
-
 }

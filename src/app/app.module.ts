@@ -1,3 +1,4 @@
+import { ProductService } from './product.service';
 import { CategoryService } from './category.service';
 import { AdminAuth } from './admin.service';
 import { UserService } from './user.service';
@@ -7,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CustomFormsModule } from 'ng2-validation';
 
 import { RouterModule, Routes, Route } from '@angular/router';
 
@@ -28,6 +30,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { ProductFormComponent } from './product-form/product-form.component';
+import { FormsModule } from '@angular/forms';
 
 const route:Routes = [
   {
@@ -61,13 +64,18 @@ const route:Routes = [
     component:LoginComponent
   },
   {
-    path:'admin/products',
-    component:AdminProductsComponent,
+    path:'admin/products/:id',
+    component:ProductFormComponent,
     canActivate: [AuthGuard,AdminAuth]
   },
   {
     path:'admin/products/new',
     component:ProductFormComponent,
+    canActivate: [AuthGuard,AdminAuth]
+  },
+  {
+    path:'admin/products',
+    component:AdminProductsComponent,
     canActivate: [AuthGuard,AdminAuth]
   },
   {
@@ -94,6 +102,8 @@ const route:Routes = [
     ProductFormComponent
   ],
   imports: [
+    FormsModule,
+    CustomFormsModule,
     BrowserModule,
     RouterModule.forRoot(route),
     AngularFireModule.initializeApp(environment.firebase),
@@ -106,7 +116,8 @@ const route:Routes = [
     AuthGuard,
     UserService,
     AdminAuth,
-    CategoryService
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
