@@ -23,6 +23,11 @@ export class ProductService {
      return data.map(c => ({key: c.payload.key, ...c.payload.val()}));
    });
  }
+
+ delete(id)
+ {
+   return this.db.list("/products/"+id).remove();  
+ }
  
  getProductFromId(id)
  {

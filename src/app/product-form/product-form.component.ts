@@ -11,7 +11,7 @@ import 'rxjs/add/operator/take';
 //   imageUrl?:string,
 //   category?:string
 
-}
+// }
 
 @Component({
   selector: 'app-product-form',
@@ -21,7 +21,7 @@ import 'rxjs/add/operator/take';
 export class ProductFormComponent implements OnInit {
 
   categories$;
-  productObj={};
+  productObj: any={};
   id;
 
   constructor(
@@ -29,14 +29,22 @@ export class ProductFormComponent implements OnInit {
     private product:ProductService, 
     private router:Router,
     private route: ActivatedRoute) {
+    this.categories$ = categories.getCategories();
 
       this.id = this.route.snapshot.paramMap.get('id');
       if(this.id) this.product.getProductFromId(this.id).take(1).subscribe(data => this.productObj = data);
 
-    this.categories$ = categories.getCategories();
    }
 
   ngOnInit() {
+  }
+
+  delete()
+  {
+    if(!confirm('Are you sure?')) return;
+
+    this.product.delete(this.id);
+    this.router.navigateByUrl('/admin/products');
   }
 
   saveData(product)

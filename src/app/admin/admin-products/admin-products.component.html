@@ -1,6 +1,15 @@
 <p>
     <a routerLink="/admin/products/new" class="btn btn-primary">ADD NEW</a>
 </p>
+
+<div *ngIf="products then loading else show"></div>
+<ng-template #show>
+<div class="text-primary">Loading...</div>
+</ng-template >
+<ng-template #loading>
+<div class="form-group">
+    <input #query (keyup)="filtering(query.value)" type="text" class="form-control">
+</div>  
 <table class="table">
     <thead class="table-dark">
         <tr>
@@ -10,7 +19,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let product of products$ |async">
+        <tr *ngFor="let product of filteredProducts">
             <td>
                 {{product.name}}
             </td>
@@ -23,3 +32,5 @@
         </tr>
     </tbody>
 </table>
+
+</ng-template>
