@@ -1,0 +1,72 @@
+{
+    "categories": {
+        "beauty": {
+            "name": "Beauty and Care"
+        },
+        "bread": {
+            "name": "Bread"
+        },
+        "fruits": {
+            "name": "Fruits"
+        }
+    },
+    "products": {
+        "-L-AZVfxwG5Jyeq5VF7t": {
+            "category": "fruits",
+            "imageUrl": "http://maxpixel.freegreatpicture.com/static/photo/1x/Bakery-Dessert-Tasty-Homemade-Cookies-Pastry-2261389.jpg",
+            "name": "Ginger Breads",
+            "price": "78",
+            "title": "Ginger Bread"
+        },
+        "-L-AaPhEUee2H-ulq0Vv": {
+            "category": "fruits",
+            "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Krushers_strawberry_%26_Granola.JPG/1280px-Krushers_strawberry_%26_Granola.JPG",
+            "name": "Krusher",
+            "price": "80"
+        },
+        "anotherProduct": {
+            "category": "beauty",
+            "imageUrl": "https://cdn.pixabay.com/photo/2016/07/26/16/48/cosmetics-1543276_1280.jpg",
+            "name": "lip gloss",
+            "price": 200,
+            "title": "lip gloss"
+        },
+        "ulq0Vvsdss": {
+            "category": "fruits",
+            "imageUrl": "https://cdn.pixabay.com/photo/2017/03/01/16/45/fruit-2109043_1280.jpg",
+            "name": "Krusher",
+            "price": "80"
+        },
+        "dfdfdfr": {
+            "category": "fruits",
+            "imageUrl": "https://cdn.pixabay.com/photo/2017/07/28/14/29/macarons-2548827_1280.jpg",
+            "name": "Krusher",
+            "price": "80"
+        },
+        "sdsssdsd": {
+            "category": "fruits",
+            "imageUrl": "https://cdn.pixabay.com/photo/2017/07/28/14/05/macarons-2548741_1280.jpg",
+            "name": "Krusher",
+            "price": "80"
+        }
+    },
+    "user": {
+        "i4GTOUAYgwMbFX2lrD6tgh7F9q22": {
+            "email": "praneshpsg239@gmail.com",
+            "isAdmin": true,
+            "name": "Ganapathi pranesh",
+            "photoURL": "https://lh3.googleusercontent.com/-_9uFlF2ndrg/AAAAAAAAAAI/AAAAAAAAAG4/pgbggD6sysU/photo.jpg"
+        },
+        "kRO7IB8EUAVwerpIbOvdEBgD1lx2": {
+            "email": "pranesh239@gmail.com",
+            "name": "Ganapathi Pranesh",
+            "photoURL": "https://lh3.googleusercontent.com/-qWeWAVrrJYk/AAAAAAAAAAI/AAAAAAAAAKQ/r5x083LIRWk/photo.jpg"
+        }
+    },
+    "users": {
+        "i4GTOUAYgwMbFX2lrD6tgh7F9q22": {
+            "email": "praneshpsg239@gmail.com",
+            "name": "Ganapathi pranesh"
+        }
+    }
+}

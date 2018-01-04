@@ -16,7 +16,7 @@
 </li>
       </ng-template>
       
-      <li ngbDropdown class="nav-item dropdown" *ngIf="appUser; else anonymousUser">
+      <li ngbDropdown class="nav-item dropdown dropIndex" *ngIf="appUser; else anonymousUser">
         <a ngbDropdownToggle class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">
           <img [src]='appUser.photoURL' class="userimg"> {{appUser.name }}

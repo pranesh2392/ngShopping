@@ -1,0 +1,11 @@
+<div class="card mb-3 rounded-0">
+  <div class="card-header"> {{product.category}}</div>
+  <img class="card-img-top" src="{{product.imageUrl}}" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">{{product.name}}</h4>
+    <p class="card-text">{{product.price | currency:'INR':'true'}}</p>
+  </div>
+  <div class="card-footer p-0">
+    <button (click)="addToCart(product)" class="btn btn-block rounded-0 btn-primary">ADD TO CART</button>
+  </div>
+</div>

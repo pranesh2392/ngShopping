@@ -5,14 +5,6 @@ import { CategoryService } from './../category.service';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/take';
 
-// interface ProdInt {
-//   name?: string,
-//   price?:any,
-//   imageUrl?:string,
-//   category?:string
-
-// }
-
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -21,7 +13,7 @@ import 'rxjs/add/operator/take';
 export class ProductFormComponent implements OnInit {
 
   categories$;
-  productObj: any={};
+  productObject={};
   id;
 
   constructor(
@@ -32,7 +24,9 @@ export class ProductFormComponent implements OnInit {
     this.categories$ = categories.getCategories();
 
       this.id = this.route.snapshot.paramMap.get('id');
-      if(this.id) this.product.getProductFromId(this.id).take(1).subscribe(data => this.productObj = data);
+      if(this.id) this.product.getProductFromId(this.id).take(1).subscribe(data => this.productObject = data);
+      else
+        this.productObject={};
 
    }
 
@@ -47,7 +41,7 @@ export class ProductFormComponent implements OnInit {
     this.router.navigateByUrl('/admin/products');
   }
 
-  saveData(product)
+  save(product)
   {
     if(this.id) this.product.update(this.id,product);
     else this.product.create(product);

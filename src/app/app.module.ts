@@ -1,3 +1,4 @@
+import { CartService } from './cart-service.service';
 import { ProductService } from './product.service';
 import { CategoryService } from './category.service';
 import { AdminAuth } from './admin.service';
@@ -31,11 +32,13 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { FormsModule } from '@angular/forms';
+import { ProductCategoryComponent } from './products/product-category/product-category.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 const route:Routes = [
   {
     path:'',
-    component:HomeComponent
+    component:ProductsComponent
   },
   {
     path:'shopping-cart',
@@ -99,7 +102,9 @@ const route:Routes = [
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductCategoryComponent,
+    ProductCardComponent
   ],
   imports: [
     FormsModule,
@@ -117,7 +122,8 @@ const route:Routes = [
     UserService,
     AdminAuth,
     CategoryService,
-    ProductService
+    ProductService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })
