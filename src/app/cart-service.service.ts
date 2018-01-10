@@ -1,7 +1,16 @@
+import { Observable } from 'rxjs/Observable';
+import { ShoppingCartItem } from './module/shopping-cart-item';
 import { Product } from './module/product';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import "rxjs/add/operator/take";
+import "rxjs/add/operator/map";
+import { ShoppingCart } from "./module/shopping-cart";
+
+interface Cart  {
+  items:Product,
+  quantity: number
+} 
 
 @Injectable()
 export class CartService {
@@ -15,44 +24,52 @@ create()
   });
 }
 
-private getCartItem(cartId, productId)
+private getCartItem(cartId, productId):AngularFireObject<ShoppingCartItem>
 {
   return this.db.object('/shopping-cart/' + cartId + '/items/' + productId)
 }
 
-private getCart(cartId)
+  async getCart(): Promise<Observable<ShoppingCart>>
 {
-  return this.db.object('/shopping-cart/'+cartId).valueChanges();
+  let cartId = await this.getOrCreateCartId();
+  return this.db.object('/shopping-cart/'+cartId).valueChanges().map(x => {
+   return  new ShoppingCart(x['items'])
+  });
 }
 
-private async getOrCreateCart()
+private async getOrCreateCartId()
 {
   let cart = localStorage.getItem('cartId');
 
   if (cart) return cart;
-
-    let cartAwait = await this.create();
+  
+  let cartAwait = await this.create();
     localStorage.cartId=cartAwait.key;
     return cartAwait.key;
 }
 
-async addToCart(product: Product)
+addToCart(product: Product)
 {
   // while getting value from async function, it will be given as promise only, so to avoid that complexity, we are getting it through async function itself
+  this.changeQuantity(product,  1);
+}
 
-  let cartId = await this.getOrCreateCart();
+removeFromCart(product:Product)
+{
+  this.changeQuantity(product,-1);
+}
 
-  let cartItem$: AngularFireObject<{}> = this.getCartItem(cartId,product.key);
-
+async changeQuantity(product:Product, change:number)
+{
+  let cartId = await this.getOrCreateCartId();
+  let cartItem$: AngularFireObject<ShoppingCartItem> = this.getCartItem(cartId, product.key);
   cartItem$.valueChanges().take(1).subscribe(item => {
 
-    if (item) cartItem$.update({ product: product, quantity: item['quantity'] + 1}) 
-      else
-      cartItem$.set({ product: product, quantity:1});
-
-    // let add = (item.quantity !== null) ? item.quantity : 0;
-  // cartItem$.update({ product: product, quantity: add +1});
-  });  
-
+    if (item) cartItem$.update({ product: product, quantity: item.quantity + change })
+    else
+      cartItem$.set({ product: product, quantity: 1 });
+  });
 }
+
+
 }

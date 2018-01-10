@@ -8,7 +8,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/shopping-cart">Shopping cart <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/shopping-cart">
+          Shopping cart 
+          <span class="badge badge-success" *ngIf="cart$ | async as cart">{{cart.totalQuantity}}</span></a>
       </li>
       <ng-template #anonymousUser>
 <li class="nav-item active">

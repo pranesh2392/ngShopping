@@ -9,11 +9,25 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProductCardComponent {
 
   @Input() product;
+  @Input() shoppingCart;
 
   constructor(private cartService:CartService) { }
 
-  addToCart(product)
+  addToCart()
   {
-    this.cartService.addToCart(product);
+    this.cartService.addToCart(this.product);
+  }
+
+  removeFromCart()
+  {
+    this.cartService.removeFromCart(this.product);
+  }
+
+  getQuantity()
+  {
+    if (!this.shoppingCart) return 0;
+    let quantity = this.shoppingCart.itemsMap[this.product.key].quantity;
+    return (quantity) ? quantity : 0;
+
   }
 }

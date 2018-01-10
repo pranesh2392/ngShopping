@@ -1,3 +1,27 @@
-<p>
-  shopping-cart works!
-</p>
+<div class="display-2">Shopping Cart</div>
+<ng-container *ngIf="cart$ | async as cart">
+<p class="lead">You have {{cart.totalQuantity}} item(s) in the cart</p>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-responsive w-100 table-hover">
+      <tr>
+        <th>Product(s)</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+      <tr *ngFor="let item of cart.items">
+        <td>{{item.product.name}}</td>
+        <td>{{item.quantity}}</td>
+        <td align="right">{{item.totalPrice | currency:'INR':'true'}}</td>
+      </tr>
+      <tr>
+        <th></th>
+        <th>Grand Total</th>
+        <th align="right">{{cart.grandTotal | currency:'INR':'true'}}</th>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+</ng-container>
