@@ -34,6 +34,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { FormsModule } from '@angular/forms';
 import { ProductCategoryComponent } from './products/product-category/product-category.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 
 const route:Routes = [
   {
@@ -104,7 +105,8 @@ const route:Routes = [
     LoginComponent,
     ProductFormComponent,
     ProductCategoryComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductQuantityComponent
   ],
   imports: [
     FormsModule,

@@ -50,7 +50,6 @@ private async getOrCreateCartId()
 
 addToCart(product: Product)
 {
-  // while getting value from async function, it will be given as promise only, so to avoid that complexity, we are getting it through async function itself
   this.changeQuantity(product,  1);
 }
 
@@ -61,6 +60,7 @@ removeFromCart(product:Product)
 
 async changeQuantity(product:Product, change:number)
 {
+  // while getting value from async function, it will be given as promise only, so to avoid that complexity, we are getting it through async function itself
   let cartId = await this.getOrCreateCartId();
   let cartItem$: AngularFireObject<ShoppingCartItem> = this.getCartItem(cartId, product.key);
   cartItem$.valueChanges().take(1).subscribe(item => {

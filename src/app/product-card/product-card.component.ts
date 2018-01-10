@@ -1,3 +1,4 @@
+import { ShoppingCart } from './../module/shopping-cart';
 import { CartService } from './../cart-service.service';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -9,18 +10,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProductCardComponent {
 
   @Input() product;
-  @Input() shoppingCart;
+  @Input() shoppingCart: ShoppingCart;
 
   constructor(private cartService:CartService) { }
 
   addToCart()
   {
     this.cartService.addToCart(this.product);
-  }
-
-  removeFromCart()
-  {
-    this.cartService.removeFromCart(this.product);
   }
 
   getQuantity()
