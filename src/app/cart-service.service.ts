@@ -67,7 +67,7 @@ async changeQuantity(product:Product, change:number)
 
     if (item) cartItem$.update({ product: product, quantity: item.quantity + change })
     else
-      cartItem$.set({ product: product, quantity: 1 });
+      cartItem$.set({product: product, quantity: 1});
   });
 }
 
